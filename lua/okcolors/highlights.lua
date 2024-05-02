@@ -167,7 +167,7 @@ function M.get_highlight_groups()
             Pmenu             = { fg = palette.tx, bg = palette.ui },
             PmenuSel          = { fg = palette.tx, bg = palette.ui3, bold = true },
             Question          = { fg = palette.yellow },
-            Search            = { fg = palette.magenta, bold = true },
+            Search            = { fg = palette.magenta, bold = true, underline = true },
             SignColumn        = { fg = palette.tx },
             SpecialKey        = { fg = palette.blue },
             StatusLine        = { fg = palette.tx2, bold = true },
