@@ -123,7 +123,7 @@ function M.get_highlight_groups()
             ["@markup.math"]                         = { fg = palette.green },
             ["@markup.link"]                         = { fg = palette.blue },
             ["@markup.link.label"]                   = { fg = palette.blue },
-            ["@markup.link.url"]                     = { fg = palette.blue },
+            ["@markup.link.url"]                     = { fg = palette.blue, underline = true },
             ["@markup.raw"]                          = { fg = palette.tx2 },
             ["@markup.raw.block"]                    = { link = "@markup.raw" },
             ["@markup.list"]                         = { fg = palette.tx },
