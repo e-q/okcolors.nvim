@@ -14,6 +14,4 @@ function config.extend_options(options)
     config.options = vim.tbl_deep_extend("force", config.options, options or {})
 end
 
-
-
 return config
