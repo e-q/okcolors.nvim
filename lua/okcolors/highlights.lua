@@ -13,30 +13,36 @@ function M.get_highlight_groups()
             Number         = { link = "Constant" },
             Boolean        = { link = "Constant" },
             Float          = { link = "Constant" },
-            Identifier     = { fg = palette.tx },
+
+            Identifier     = { link = "Normal" },
             Function       = { italic = true },
+
             Statement      = { fg = palette.purple },
             Conditional    = { link = "Statement" },
             Repeat         = { link = "Statement" },
             Label          = { link = "Statement" },
-            Operator       = { fg = palette.tx },
+            Operator       = { link = "Normal" },
             Keyword        = { link = "Statement" },
             Exception      = { fg = palette.orange },
+
             PreProc        = { fg = palette.yellow },
             Include        = { link = "PreProc" },
             Define         = { link = "PreProc" },
             Macro          = { link = "PreProc" },
             PreCondit      = { link = "PreProc" },
+
             Type           = { fg = palette.blue },
             StorageClass   = { link = "Type" },
             Structure      = { link = "Type" },
             Typedef        = { link = "Type" },
+
             Special        = { fg = palette.yellow },
             SpecialChar    = { link = "Special" },
             Tag            = { link = "Special" },
             Delimiter      = { fg = palette.tx3 },
             SpecialComment = { link = "Special" },
             Debug          = { fg = palette.orange },
+
             Underlined     = { fg = palette.blue, underline = true },
             Ignore         = { fg = palette.tx3 },
             Error          = { fg = palette.bg, bg = palette.red },
@@ -46,8 +52,8 @@ function M.get_highlight_groups()
         tree_sitter = {
             -- Identifiers
             ["@variable"]                            = { link = "Identifier" },
-            ["@variable.builtin"]                    = { fg = palette.blue, italic = true },
-            ["@variable.parameter"]                  = { fg = palette.blue },
+            ["@variable.builtin"]                    = { link = "Statement" },
+            ["@variable.parameter"]                  = { link = "@variable" },
             ["@variable.member"]                     = { link = "@variable" },
             ["@constant"]                            = { link = "Constant" },
             ["@constant.builtin"]                    = { link = "@constant" },
@@ -79,7 +85,7 @@ function M.get_highlight_groups()
             ["@function.macro"]                      = { link = "Macro" },
             ["@function.method"]                     = { link = "@function" },
             ["@function.method.call"]                = { link = "@function" },
-            ["@constructor"]                         = { fg = palette.blue, italic = true },
+            ["@constructor"]                         = { link = "@function" },
             ["@operator"]                            = { link = "Operator" },
             -- Keywords
             ["@keyword"]                             = { link = "Keyword" },
