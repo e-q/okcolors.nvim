@@ -14,14 +14,14 @@ function M.get_highlight_groups()
             Boolean        = { link = "Constant" },
             Float          = { link = "Constant" },
 
-            Identifier     = { link = "Normal" },
+            Identifier     = {},
             Function       = { italic = true },
 
             Statement      = { fg = palette.purple },
             Conditional    = { link = "Statement" },
             Repeat         = { link = "Statement" },
             Label          = { link = "Statement" },
-            Operator       = { link = "Normal" },
+            Operator       = {},
             Keyword        = { link = "Statement" },
             Exception      = { fg = palette.orange },
 
