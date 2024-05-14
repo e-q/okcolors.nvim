@@ -14,11 +14,10 @@ including:
 
 Two variants are included:
 - `okcolors-smooth` which uses fairly uniform saturation, excepting the red and magenta
-  meant to catch the eye. All foreground/background combinations meet the WCAG AA color
-  contrast requirement (4.5:1 relative luminance).
-- `okcolors-sharp`, where all foreground/background combinations meet the WCAG AAA color
-  contrast requirement (7:1 relative luminance). Deeper saturation is employed where
-  possible, while maintaining the contrast requirements.
+  meant to catch the eye. All foreground/background combinations meet the draft WCAG 3
+  contrast requirement for "fluently readable" text.
+- `okcolors-sharp`, which employs darker black tones and deeper saturation for colored
+  text where possible, while maintaining readable contrast requirements.
 
 Each variant defines light and dark versions, which are automatically set according to
 `vim.o.background`.
@@ -54,6 +53,7 @@ vim.cmd("colorscheme okcolors")
 
 ## Other Helpful Resources
 
-- [WCAG Color Contrast Checker](https://www.siegemedia.com/contrast-ratio)
+- [WCAG 2 Color Contrast Checker](https://www.siegemedia.com/contrast-ratio)
+- [Draft WCAG 3 Color Contrast Checker](https://cliambrown.com/contrast/)
 - [Okhsv & Okhsl Color Pickers](https://bottosson.github.io/misc/colorpicker)
 - [OKLCH Color Picker & Converter](https://oklch.com)
