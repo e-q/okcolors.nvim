@@ -46,7 +46,7 @@ function M.get_highlight_groups()
 
             Underlined     = { fg = palette.blue, underline = true },
             Ignore         = { fg = palette.muted },
-            Error          = { fg = palette.red, bold=true },
+            Error          = { fg = palette.red, bold = true },
             Todo           = { fg = palette.yellow },
 
             Added          = { fg = palette.green },
@@ -136,8 +136,8 @@ function M.get_highlight_groups()
             ["@markup.list.unchecked"]               = { fg = palette.tx },
             --- Non-highlighting captures
             ["@conceal"]                             = { link = "Conceal" },
-            ["@conceal.markdown"]                    = { fg = palette.subtle },
-            ["@conceal.markdown_inline"]             = { fg = palette.subtle },
+            ["@conceal.markdown"]                    = { link = "Conceal" },
+            ["@conceal.markdown_inline"]             = { link = "Conceal" },
             --- Semantic
             ["@lsp.type.enum"]                       = { link = "@type" },
             ["@lsp.type.interface"]                  = { link = "@interface" },
@@ -157,7 +157,7 @@ function M.get_highlight_groups()
         ui = {
             -- See :help highlight-groups
             ColorColumn       = { bg = palette.surface },
-            Conceal           = { fg = palette.subtle, bg = palette.hilite_lo },
+            Conceal           = { fg = palette.subtle, bg = "NONE" },
             CurSearch         = { fg = palette.bg, bg = palette.magenta },
             Cursor            = { fg = palette.tx, bg = palette.hilite_hi },
             CursorColumn      = { bg = palette.surface },
