@@ -176,7 +176,7 @@ function M.get_highlight_groups()
             MoreMsg           = { fg = palette.green },
             NonText           = { fg = palette.muted },
             NormalFloat       = { fg = palette.tx, bg = palette.surface },
-            NormalNC          = { fg = palette.subtle },
+            NormalNC          = { link = "Normal" },
             NvimInternalError = { link = "ErrorMsg" },
             Pmenu             = { fg = palette.tx, bg = palette.surface },
             PmenuSel          = { fg = palette.tx, bg = palette.hilite_med, bold = true },
