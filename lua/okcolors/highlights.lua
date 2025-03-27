@@ -3,11 +3,12 @@ function M.get_highlight_groups()
     local palette = require("okcolors.palette")
     local highlight_groups = {
         base = {
-            Normal  = { fg = palette.tx, bg = palette.bg },
-            Comment = { fg = palette.muted },
+            Normal = { fg = palette.tx, bg = palette.bg },
         },
         syntax_groups = {
             -- See :help group-name
+            Comment        = { fg = palette.muted },
+
             Constant       = { fg = palette.cyan },
             String         = { fg = palette.green },
             Character      = { link = "String" },
@@ -15,14 +16,14 @@ function M.get_highlight_groups()
             Boolean        = { link = "Constant" },
             Float          = { link = "Constant" },
 
-            Identifier     = {},
+            Identifier     = { fg = palette.tx },
             Function       = { italic = true },
 
             Statement      = { fg = palette.purple },
             Conditional    = { link = "Statement" },
             Repeat         = { link = "Statement" },
             Label          = { link = "Statement" },
-            Operator       = {},
+            Operator       = { fg = palette.tx },
             Keyword        = { link = "Statement" },
             Exception      = { fg = palette.orange },
 
@@ -45,99 +46,104 @@ function M.get_highlight_groups()
             Debug          = { fg = palette.orange },
 
             Underlined     = { fg = palette.blue, underline = true },
+
             Ignore         = { fg = palette.muted },
+
             Error          = { fg = palette.red, bold = true },
+
             Todo           = { fg = palette.yellow },
 
             Added          = { fg = palette.green },
             Changed        = { fg = palette.yellow },
             Removed        = { fg = palette.red },
         },
-        -- See https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
+        -- See :help tresitter-highlight-groups
         tree_sitter = {
-            -- Identifiers
             ["@variable"]                            = { link = "Identifier" },
             ["@variable.builtin"]                    = { link = "Statement" },
-            ["@variable.parameter"]                  = { link = "@variable" },
-            ["@variable.member"]                     = { link = "@variable" },
+
             ["@constant"]                            = { link = "Constant" },
-            ["@constant.builtin"]                    = { link = "@constant" },
-            ["@constant.macro"]                      = { link = "@constant" },
+            ["@constant.builtin"]                    = { fg = palette.cyan, bold = true },
+
             ["@module"]                              = { link = "Include" },
-            ["@module.builtin"]                      = { link = "@module" },
             ["@label"]                               = { link = "Label" },
-            -- Literals
+
             ["@string"]                              = { link = "String" },
             ["@string.regexp"]                       = { fg = palette.yellow },
             ["@string.escape"]                       = { fg = palette.yellow },
             ["@string.special"]                      = { link = "Special" },
             ["@string.special.symbol"]               = { link = "Identifier" },
-            ["@string.special.url"]                  = { link = "Underlined" },
             ["@string.special.path"]                 = { link = "Directory" },
+            ["@string.special.url"]                  = { link = "Underlined" },
+
             ["@character"]                           = { link = "Character" },
             ["@character.special"]                   = { link = "SpecialChar" },
+
             ["@boolean"]                             = { link = "Boolean" },
             ["@number"]                              = { link = "Number" },
             ["@number.float"]                        = { link = "Float" },
-            -- Types
+
             ["@type"]                                = { link = "Type" },
             ["@type.builtin"]                        = { link = "@type" },
+
+            ["@attribute"]                           = { link = "Constant" },
+            ["@attribute.builtin"]                   = { link = "@attribute" },
             ["@property"]                            = { link = "Identifier" },
-            --- Functions
+
             ["@function"]                            = { link = "Function" },
             ["@function.builtin"]                    = { link = "@function" },
-            ["@function.call"]                       = { link = "@function" },
-            ["@function.macro"]                      = { link = "Macro" },
-            ["@function.method"]                     = { link = "@function" },
-            ["@function.method.call"]                = { link = "@function" },
-            ["@constructor"]                         = { link = "@function" },
+            ["@function.macro"]                      = { fg = palette.yellow, italic = true },
+
+            ["@constructor"]                         = { link = "@type" },
             ["@operator"]                            = { link = "Operator" },
-            -- Keywords
+
             ["@keyword"]                             = { link = "Keyword" },
-            ["@keyword.operator"]                    = { link = "Keyword" },
             ["@keyword.debug"]                       = { link = "Debug" },
             ["@keyword.exception"]                   = { link = "Exception" },
+
             ["@keyword.directive"]                   = { link = "PreProc" },
             ["@keyword.directive.define"]            = { link = "Define" },
-            -- Punctuation
+
             ["@punctuation.delimiter"]               = { link = "Delimiter" },
             ["@punctuation.bracket"]                 = { fg = palette.subtle },
             ["@punctuation.special"]                 = { link = "Special" },
-            -- Comments
+
             ["@comment"]                             = { link = "Comment" },
-            ["@comment.error"]                       = { fg = palette.red },
-            ["@comment.warning"]                     = { fg = palette.orange },
+
+            ["@comment.error"]                       = { fg = palette.red, bold = true },
+            ["@comment.warning"]                     = { fg = palette.orange, bold = true },
             ["@comment.todo"]                        = { fg = palette.muted, bold = true },
             ["@comment.note"]                        = { fg = palette.muted, bold = true },
-            -- Markup
-            ["@tag"]                                 = { link = "Tag" },
-            ["@tag.attribute"]                       = { link = "@variable.parameter" },
-            ["@tag.delimiter"]                       = { link = "delimiter" },
+
             ["@markup.strong"]                       = { bold = true },
             ["@markup.italic"]                       = { italic = true },
             ["@markup.strikethrough"]                = { strikethrough = true },
             ["@markup.underline"]                    = { underline = true },
+
             ["@markup.heading"]                      = { fg = palette.tx, bold = true },
-            ["@markup.heading.1"]                    = { link = "@markup.heading" },
-            ["@markup.heading.2"]                    = { link = "@markup.heading" },
-            ["@markup.heading.3"]                    = { link = "@markup.heading" },
-            ["@markup.heading.4"]                    = { link = "@markup.heading" },
-            ["@markup.heading.5"]                    = { link = "@markup.heading" },
-            ["@markup.heading.6"]                    = { link = "@markup.heading" },
+
             ["@markup.quote"]                        = { fg = palette.subtle },
-            ["@markup.math"]                         = { fg = palette.green },
+            ["@markup.math"]                         = { link = "Special" },
+
             ["@markup.link"]                         = { fg = palette.blue },
-            ["@markup.link.label"]                   = { fg = palette.blue },
-            ["@markup.link.url"]                     = { fg = palette.blue, underline = true },
+            ["@markup.link.url"]                     = { link = "Underlined" },
+
             ["@markup.raw"]                          = { fg = palette.subtle },
-            ["@markup.raw.block"]                    = { link = "@markup.raw" },
+
             ["@markup.list"]                         = { fg = palette.tx },
             ["@markup.list.checked"]                 = { fg = palette.green },
             ["@markup.list.unchecked"]               = { fg = palette.tx },
+
+            ["@diff.delta"]                          = { link = "DiffChange" },
+            ["@diff.minus"]                          = { link = "DiffDelete" },
+            ["@diff.plus"]                           = { link = "DiffAdd" },
+
+            ["@tag"]                                 = { link = "Tag" },
+            ["@tag.attribute"]                       = { link = "@variable.parameter" },
+            ["@tag.delimiter"]                       = { link = "delimiter" },
+
             --- Non-highlighting captures
             ["@conceal"]                             = { link = "Conceal" },
-            ["@conceal.markdown"]                    = { link = "Conceal" },
-            ["@conceal.markdown_inline"]             = { link = "Conceal" },
             --- Semantic
             ["@lsp.type.enum"]                       = { link = "@type" },
             ["@lsp.type.interface"]                  = { link = "@interface" },
@@ -146,7 +152,7 @@ function M.get_highlight_groups()
             ["@lsp.type.namespace.python"]           = { link = "@variable" },
             ["@lsp.type.parameter"]                  = { link = "@parameter" },
             ["@lsp.type.property"]                   = { link = "@property" },
-            ["@lsp.type.variable.svelte"]            = { link = "@variable" },
+            ["@lsp.type.variable"]                   = {},
             ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
             ["@lsp.typemod.operator.injected"]       = { link = "@operator" },
             ["@lsp.typemod.string.injected"]         = { link = "@string" },
@@ -160,10 +166,10 @@ function M.get_highlight_groups()
             Conceal           = { fg = palette.subtle, bg = "NONE" },
             CurSearch         = { fg = palette.bg, bg = palette.magenta },
             Cursor            = { fg = palette.tx, bg = palette.hilite_hi },
-            CursorColumn      = { bg = palette.surface },
-            CursorLine        = { bg = palette.surface },
+            CursorColumn      = { bg = palette.overlay },
+            CursorLine        = { bg = palette.overlay },
             CursorLineNr      = { fg = palette.tx },
-            Directory         = { fg = palette.blue, bold = true },
+            Directory         = { fg = palette.blue },
             ErrorMsg          = { fg = palette.red, bold = true },
             FloatBorder       = { fg = palette.blue, bg = palette.surface },
             FloatTitle        = { bold = true, bg = palette.surface },
@@ -171,7 +177,7 @@ function M.get_highlight_groups()
             Folded            = { bg = palette.hilite_lo },
             IncSearch         = { link = "CurSearch" },
             LineNr            = { fg = palette.muted },
-            MatchParen        = { bg = palette.hilite_med },
+            MatchParen        = { bg = palette.overlay },
             ModeMsg           = { fg = palette.subtle },
             MoreMsg           = { fg = palette.green },
             NonText           = { fg = palette.muted },
@@ -179,21 +185,26 @@ function M.get_highlight_groups()
             NormalNC          = { link = "Normal" },
             NvimInternalError = { link = "ErrorMsg" },
             Pmenu             = { fg = palette.tx, bg = palette.surface },
-            PmenuSel          = { fg = palette.tx, bg = palette.hilite_med, bold = true },
+            PmenuExtra        = { fg = palette.muted, bg = palette.surface },
+            PmenuExtraSel     = { fg = palette.subtle, bg = palette.surface },
+            PmenuKind         = { fg = palette.green, bg = palette.surface },
+            PmenuKindSel      = { fg = palette.subtle, bg = palette.overlay },
+            PmenuSbar         = { bg = palette.surface },
+            PmenuSel          = { fg = palette.tx, bg = palette.overlay, bold = true },
             PmenuThumb        = { bg = palette.muted },
             Question          = { fg = palette.yellow },
             QuickFixLine      = { fg = palette.magenta, bg = palette.overlay, bold = true },
             Search            = { fg = palette.magenta, bold = true, underline = true },
             SignColumn        = { fg = palette.tx },
             SpecialKey        = { fg = palette.blue },
-            StatusLine        = { fg = palette.subtle, bg = palette.overlay, bold = true },
-            StatusLineNC      = { fg = palette.muted, bg = palette.overlay },
+            StatusLine        = { fg = palette.subtle, bg = palette.surface, bold = true },
+            StatusLineNC      = { fg = palette.muted, bg = palette.surface },
             StatusLineTerm    = { fg = palette.bg, bg = palette.green, bold = true },
             StatusLineTermNC  = { fg = palette.surface, bg = palette.green },
             Substitute        = { link = "IncSearch" },
             TabLine           = { fg = palette.subtle, bg = palette.surface },
             TabLineFill       = { bg = palette.surface },
-            TabLineSel        = { fg = palette.tx, bg = palette.hilite_med, bold = true },
+            TabLineSel        = { fg = palette.tx, bg = palette.overlay, bold = true },
             Title             = { bold = true },
             Visual            = { bg = palette.hilite_med },
             WarningMsg        = { fg = palette.red, bold = true },
@@ -233,23 +244,17 @@ function M.get_highlight_groups()
             DiagnosticSignWarn         = { link = "DiagnosticWarn" },
         },
         diffs = {
-            DiffText        = { fg = palette.yellow, bold = true },
+            DiffText       = { fg = palette.yellow, bold = true },
 
-            DiffAdd         = { link = "Added" },
-            DiffChange      = { link = "Changed" },
-            DiffDelete      = { link = "Removed" },
-            GitSignsAdd     = { link = "SignAdd" },
-            GitSignsChange  = { link = "SignChange" },
-            GitSignsDelete  = { link = "SignDelete" },
-            SignAdd         = { link = "DiffAdd" },
-            SignChange      = { link = "DiffChange" },
-            SignDelete      = { link = "DiffDelete" },
-            ["@diff.delta"] = { link = "DiffChange" },
-            ["@diff.minus"] = { link = "DiffDelete" },
-            ["@diff.plus"]  = { link = "DiffAdd" },
-            diffAdded       = { link = "DiffAdd" },
-            diffChanged     = { link = "DiffChange" },
-            diffRemoved     = { link = "DiffDelete" },
+            DiffAdd        = { link = "Added" },
+            DiffChange     = { link = "Changed" },
+            DiffDelete     = { link = "Removed" },
+            GitSignsAdd    = { link = "DiffAdd" },
+            GitSignsChange = { link = "DiffChange" },
+            GitSignsDelete = { link = "DiffDelete" },
+            diffAdded      = { link = "DiffAdd" },
+            diffChanged    = { link = "DiffChange" },
+            diffRemoved    = { link = "DiffDelete" },
         },
         spell = {
             SpellBad   = { sp = palette.red, undercurl = true },
