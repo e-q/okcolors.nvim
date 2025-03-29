@@ -206,7 +206,7 @@ function M.get_highlight_groups()
             TabLineFill       = { bg = palette.surface },
             TabLineSel        = { fg = palette.tx, bg = palette.overlay, bold = true },
             Title             = { bold = true },
-            Visual            = { bg = palette.hilite_med },
+            Visual            = { bg = palette.hilite_mid },
             WarningMsg        = { fg = palette.red, bold = true },
             WildMenu          = { link = "IncSearch" },
             WinBar            = { link = "StatusLine" },
